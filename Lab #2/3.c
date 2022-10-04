@@ -3,20 +3,19 @@
 int main()
 {
 	int x = 0;
-	int y = 1;
-	int fib, N;
+	int fib = 1;
+	int N;
 	printf("Input number -");
 	scanf_s("%d", &N);
 	for(int i = 1; i <= N ; i++)
 	{
 		if (i == x + y)
 		{
+			x = fib;
 			fib = i;
-			x = y;
-			y = i;
 		}
 	}
-	if (N == fib)
+	if (N == fib || N == 0)
 	{
 		printf("True");
 	}
