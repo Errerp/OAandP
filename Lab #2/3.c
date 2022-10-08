@@ -9,7 +9,7 @@ int main()
 	scanf_s("%d", &N);
 	for(int i = 1; i <= N ; i++)
 	{
-		if (i == x + y)
+		if (i == x + fib)
 		{
 			x = fib;
 			fib = i;
