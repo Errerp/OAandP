@@ -35,9 +35,11 @@ int main()
             for (i = 1; i < razm; i++)
             {
                 if (fabs(arr[i]) > fabs(arr[max]))
+                {
                     max = i;
+                }
             }
-            for (i = max + 1; i < razm; i++)
+            for (i = max + 2; i < razm; i++)
             {
                 proizv *= arr[i];
             }
