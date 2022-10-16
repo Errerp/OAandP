@@ -9,11 +9,11 @@ int main()
 	switch (a)
 	{
 	case 1:
-		printf("Ñomputer science\n");
+		printf("Computer science\n");
 		printf("English");
 		break;
 	case 2:
-		printf("Ñomputer science\n");
+		printf("Computer science\n");
 		printf("English");
 		break;
 	case 3:
