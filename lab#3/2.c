@@ -31,19 +31,17 @@ int main()
                     printf("%d%c", arr[i], ' ');
                 }
                 printf("\n");
-                i = 0;
-                while (i < N)
+                for (i = 0; i < N; i++)
                 {
                     if (arr[i] % k == 1)
                     {
+                        N++;
                         for (j = N; j > i; j--)
                         {
                             arr[j] = arr[j - 1];
-                        }
-                            N++;
-                            arr[i + 1] = 0;
+                        } 
+                        arr[i + 1] = 0;
                     }
-                    i++;
                 }
                 for (i = 0; i < N; i++)
                 {
