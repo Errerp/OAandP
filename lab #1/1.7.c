@@ -1,16 +1,16 @@
 #include <stdio.h>
-#include <math.h>
+
 int main()
 {
-    double x, t, result;
-    printf("\n¬ведите число 1 ");
-    scanf_s("%lf", &x);
-    printf("\n¬ведите число 2 ");
-    scanf_s("%lf", &t);
-    printf("\nVashe srednee ariphmeticheskoe: ");
-    result = round((x + t) / 2 * 1000) / 1000;
-    printf("%.3lf", result);
-    result = round(sqrt(x * t) * 1000) / 1000;
-    printf("\nVashe srednee geometricheskoe: ");
-    printf("%.3lf", result);
+	float pi = 3.14;
+	float rad = 0;
+	printf("Input the radius \n");
+	scanf_s("%f", &rad);
+	float length = 2 * pi * rad;						
+	float area = pi * rad * rad;						
+	printf("Circumference length = %.2f \n", length);
+	printf("Area of the circle = %.2f \n", area);
+
+	getch();
+	return 0;
 }
