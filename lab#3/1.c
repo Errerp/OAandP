@@ -27,22 +27,21 @@ int main()
         else {
             for (i = 0; i < N; i++)
             {
-                if (arr[i] > C) 
+                if (arr[i] > C)
                 {
                     large++;
                 }
-
             }
             printf("Number of array elements, large C = %d\n", large);
 
             for (i = 1; i < N; i++)
             {
-                if (fabs(arr[i]) > fabs(arr[max]))
+                if (arr[i] > arr[max])
                 {
                     max = i;
                 }
             }
-            for (i = max + 2; i < N; i++)
+            for (i = max + 1; i < N; i++)
             {
                 proizv *= arr[i];
             }
