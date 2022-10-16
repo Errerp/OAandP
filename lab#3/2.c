@@ -35,11 +35,11 @@ int main()
                 {
                     if (arr[i] % k == 1)
                     {
-                        N++;
                         for (j = N; j > i; j--)
                         {
                             arr[j] = arr[j - 1];
                         } 
+			N++;
                         arr[i + 1] = 0;
                     }
                 }
