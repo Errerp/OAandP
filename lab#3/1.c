@@ -27,7 +27,10 @@ int main()
         else {
             for (i = 0; i < N; i++)
             {
-                if (arr[i] > C) large++;
+                if (arr[i] > C) 
+                {
+                    large++;
+                }
 
             }
             printf("Number of array elements, large C = %d\n", large);
