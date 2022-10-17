@@ -28,24 +28,24 @@ int main()
                 }
                 for (i = 0; i < N; i++)
                 {
-                    printf("%d%c", arr[i], ' ');
+                    printf("%d ", arr[i]);
                 }
                 printf("\n");
-                for (i = 0; i < N; i++)
+                for (i = N; i > 0; i--)
                 {
-                    if (arr[i] % k == 1)
+                    if (i % k == 0)
                     {
+                        N++;
                         for (j = N; j > i; j--)
                         {
                             arr[j] = arr[j - 1];
-                        } 
-			N++;
+                        }
                         arr[i + 1] = 0;
                     }
                 }
                 for (i = 0; i < N; i++)
                 {
-                    printf("%d%c", arr[i], ' ');
+                    printf("%d ", arr[i]);
                 }
             }
         }
