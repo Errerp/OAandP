@@ -6,18 +6,22 @@ int main()
     int CurrentCounter = 0, BiggestCounter = 0;
     srand(time(0));
     printf("Input number of array elements\n");
-    if (scanf_s("%d", &N) != 1)
+    while (scanf_s("%d", &N) != 1)
     {
-        printf("Input error");
-        return 0;
+        printf("Input error. Try again: ");
+        rewind(stdin);
     }
     printf("Select the array input type\n1-Random\n2-Own\n");
-    scanf_s("%d", &mass);
+    while (scanf_s("%d", &mass) != 1)
+    {
+        printf("Input error. Try again: ");
+        rewind(stdin);
+    }
     switch (mass)
     {
     case 1:
         for (i = 0; i < N; i++) {
-            arr[i] = rand() % 100;
+            arr[i] = rand() % 200 - 100;
             printf("%d ", arr[i]);
         }
         printf("\n");
@@ -26,16 +30,13 @@ int main()
         printf("Input array elements\n");
         for (i = 0; i < N; i++)
         {
-            if (scanf_s("%d", &arr[i]) != 1)
+            while (scanf_s("%d", &arr[i]) != 1)
             {
-                printf("Input error");
-                return 0;
+                printf("Input error. Try again: ");
+                rewind(stdin);
             }
         }
         break;
-    default:
-        printf("Input error");
-        return 0;
     }
         for (int i = 0; i < N; i++)
         {
