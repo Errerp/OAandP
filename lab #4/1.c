@@ -49,7 +49,7 @@ int main(){
     }
     for (i = 1; i <= row; i++) {
         for (j = 1; j <= col; j++) {
-            printf("%d ", arr[i][j]);
+            printf("%5d ", arr[i][j]);
         }
         printf("\n");
     }
