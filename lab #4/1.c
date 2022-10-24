@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int N, mass;
 int prov(){
     while (scanf_s("%d", &N) != 1) {
@@ -14,7 +15,6 @@ int provmass() {
     }
 }
     
-
 int main(){
     int i,j, arr[100][100], col, row,count = 0, num = 0;
     srand(time(0));
