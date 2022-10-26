@@ -52,7 +52,7 @@ int main() {
     }
     printf("\n");
     min = arr[0][0];
-    for (int i = N / 2 + 1, k = 0; i < N; i++, k++) {
+    for (int i = N / 2, k = 0; i < N; i++, k++) {
         for (int j = N / 2 - k; j <= N / 2 + k; j++)
             if (arr[i][j] < min && arr[i][j] % 2 == 0) {
                 min = arr[i][j];
