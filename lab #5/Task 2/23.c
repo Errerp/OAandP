@@ -5,35 +5,35 @@ int main()
     int i, j, row, col, mt;
     srand(time(NULL));
     setlocale(LC_ALL, "ru");
-    printf("Кол-во строк: ");
+    printf("ГЉГ®Г«-ГўГ® Г±ГІГ°Г®ГЄ: ");
     while (scanf_s("%d", &row) != 1 || row % 1!= 0 || row > 100 || row < 1) {
-        printf("Ошибка. Пробуйте снова: ");
+        printf("ГЋГёГЁГЎГЄГ . ГЏГ°Г®ГЎГіГ©ГІГҐ Г±Г­Г®ГўГ : ");
     }
-    printf("Кол-во столбцов: ");
+    printf("ГЉГ®Г«-ГўГ® Г±ГІГ®Г«ГЎГ¶Г®Гў: ");
     while (scanf_s("%d", &col) != 1 || col  % 1 != 0 || col > 100 || col < 1) {
-        printf("Ошибка. Пробуйте снова: ");
+        printf("ГЋГёГЁГЎГЄГ . ГЏГ°Г®ГЎГіГ©ГІГҐ Г±Г­Г®ГўГ : ");
     }
     int* arr = (int*)malloc(row * col * sizeof(int));
-        printf("Выберите спосбо ввода матрицы:\n1)Вручную\n2)Рандомом\n");
+        printf("Г‚Г»ГЎГҐГ°ГЁГІГҐ Г±ГЇГ®Г±ГЎГ® ГўГўГ®Г¤Г  Г¬Г ГІГ°ГЁГ¶Г»:\n1)Г‚Г°ГіГ·Г­ГіГѕ\n2)ГђГ Г­Г¤Г®Г¬Г®Г¬\n");
     while (scanf_s("%d", &mt) != 1 || col % 1 != 0 || mt < 1 || mt > 2) {
-        printf("Ошибка. Пробуйте снова: ");
+        printf("ГЋГёГЁГЎГЄГ . ГЏГ°Г®ГЎГіГ©ГІГҐ Г±Г­Г®ГўГ : ");
     }
     
     switch (mt)
     {
         case 1:
-            printf("\nВведите элементы массива: \n");
+            printf("\nГ‚ГўГҐГ¤ГЁГІГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ» Г¬Г Г±Г±ГЁГўГ : \n");
             inputarr(arr, row, col);
             break;
         case 2:
             randarr(arr, row, col);
             break;
     }
-        printf("\nИсходный массив: \n");
+        printf("\nГ€Г±ГµГ®Г¤Г­Г»Г© Г¬Г Г±Г±ГЁГў: \n");
             printarr(arr, row, col);
             workarr(arr, row, col);
             col--;
-        printf("\nИтоговый массив: \n");
+        printf("\nГ€ГІГ®ГЈГ®ГўГ»Г© Г¬Г Г±Г±ГЁГў: \n");
             printarr(arr, row, col);
     return 0;
 }
