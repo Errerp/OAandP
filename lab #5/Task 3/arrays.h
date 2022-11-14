@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdio.h>
 
-// печать массива
+// ГЇГҐГ·Г ГІГј Г¬Г Г±Г±ГЁГўГ 
 void printarr(int* arr, int row, int col) {
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
@@ -11,7 +11,7 @@ void printarr(int* arr, int row, int col) {
         printf("\n");
     }
 }
-// ввод элементов матрицы
+// ГўГўГ®Г¤ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г ГІГ°ГЁГ¶Г»
 void inputarr(int* arr, int row, int col) {
     for (int i = 0; i < row; ++i) {
         for (int j = 0; j < col; ++j) {
@@ -21,7 +21,7 @@ void inputarr(int* arr, int row, int col) {
         }
     }
 }
-// ввод элементов матрицы рандомом
+// ГўГўГ®Г¤ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г ГІГ°ГЁГ¶Г» Г°Г Г­Г¤Г®Г¬Г®Г¬
 void randarr(int* arr, int row, int col) {
     for (int i = 0; i < row; ++i) {
         for (int j = 0; j < col; ++j) {
@@ -29,11 +29,11 @@ void randarr(int* arr, int row, int col) {
         }
     }
 }
-// работа в матрице
+// Г°Г ГЎГ®ГІГ  Гў Г¬Г ГІГ°ГЁГ¶ГҐ
 void workarr(int* arr, int row, int col) {
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
-            if (j < i) {
+            if (i + j > row - 1) {
                 printf("");
             }
             else {
