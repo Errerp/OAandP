@@ -2,16 +2,16 @@
 #include <time.h>
 #include <stdio.h>
 
-// ïå÷àòü ìàññèâà
+// печать массива
 void printarr(int* arr, int row, int col) {
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
-            printf("%5d\t", *(arr + col * i + j));
+            printf("%5d ", *(arr + col * i + j));
         }
         printf("\n");
     }
 }
-// ââîä ýëåìåíòîâ ìàòðèöû
+// ввод элементов матрицы
 void inputarr(int* arr, int row, int col) {
     for (int i = 0; i < row; ++i) {
         for (int j = 0; j < col; ++j) {
@@ -21,7 +21,7 @@ void inputarr(int* arr, int row, int col) {
         }
     }
 }
-// ââîä ýëåìåíòîâ ìàòðèöû ðàíäîìîì
+// ввод элементов матрицы рандомом
 void randarr(int* arr, int row, int col) {
     for (int i = 0; i < row; ++i) {
         for (int j = 0; j < col; ++j) {
@@ -29,15 +29,12 @@ void randarr(int* arr, int row, int col) {
         }
     }
 }
-// ðàáîòà â ìàòðèöå
+// работа в матрице
 void workarr(int* arr, int row, int col) {
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
-            if (i + j > row - 1) {
-                printf("");
-            }
-            else {
-                printf("%5d\t", *(arr + col * i + j));
+            if (i + j < row) {
+                printf("%5d ", *(arr + col * i + j));
             }
         }
         printf("\n");
