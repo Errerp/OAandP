@@ -1,37 +1,36 @@
+/*
+    Заполнить массив натуральными числами с клавиатуры. 
+    Удалить из массива все двузначные числа.
+*/
 #include "arrays.h"
 
-int main()
+void inputn(int* n) {
+    int x;
+   while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 ||  getchar() != '\n') {
+        printf("Error. Try again: ");
+    }
+   *n = x;
+}
+int* memory(int n)
 {
-    int i, j, row, col, mt;
-    srand(time(NULL));
-    printf("Input the size row: ");
-    while (scanf_s("%d", &row) != 1 || row % 1 != 0 || row > 100 || row < 1) {
-        printf("Error. Try again: ");
-    }
-    printf("Input the size column: ");
-    while (scanf_s("%d", &col) != 1 || col % 1 != 0 || col > 100 || col < 1) {
-        printf("Error. Try again: ");
-    }
-    int* arr = (int*)malloc(row * col * sizeof(int));
-    printf("Select the array input type:\n1)Own\n2)Random\n");
-    while (scanf_s("%d", &mt) != 1 || col % 1 != 0 || mt < 1 || mt > 2) {
-        printf("Error. Try again: ");
-    }
+    int* arr = (int*)malloc(n * sizeof(int));
+    return arr;
+}
 
-    switch (mt)
-    {
-    case 1:
-        printf("\nInput array elements: \n");
-            inputarr(arr, row, col);
-        break;
-    case 2:
-            randarr(arr, row, col);
-        break;
-    }
+int main() {
+    int  n, count = 0;
+    int* arr;
+    printf("Input the size array: ");
+        inputn(&n);
+        arr = memory(n);
+    printf("\nInput array elements: \n");
+        inputarr(arr, n);
     printf("\nSource array: \n");
-        printarr(arr, row, col);
-    
+        printarr(arr, n);
+        workarr(arr, n, &count);
+        n -= count;
     printf("\nThe resulting array: \n");
-        workarr(arr, row, col);
+        printarr(arr, n);
+    free(arr);
     return 0;
 }
