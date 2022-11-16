@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdio.h>
 
-// печать массива
+// РїРµС‡Р°С‚СЊ РјР°СЃСЃРёРІР°
 void printarr(int* arr, int row, int col) {
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
@@ -11,17 +11,17 @@ void printarr(int* arr, int row, int col) {
         printf("\n");
     }
 }
-// ввод элементов матрицы
+// РІРІРѕРґ СЌР»РµРјРµРЅС‚РѕРІ РјР°С‚СЂРёС†С‹
 void inputarr(int* arr, int row, int col) {
     for (int i = 0; i < row; ++i) {
         for (int j = 0; j < col; ++j) {
-            while (scanf_s("%d", arr + col * i + j) != 1 || *(arr + i * col + j) % 1 != 0) {
+            while (scanf_s("%d", arr + col * i + j) != 1 || *(arr + i * col + j) % 1 != 0 || getchar() != '\n') {
                 printf("Error. Try again: ");
             }
         }
     }
 }
-// ввод элементов матрицы рандомом
+// РІРІРѕРґ СЌР»РµРјРµРЅС‚РѕРІ РјР°С‚СЂРёС†С‹ СЂР°РЅРґРѕРјРѕРј
 void randarr(int* arr, int row, int col) {
     for (int i = 0; i < row; ++i) {
         for (int j = 0; j < col; ++j) {
@@ -29,9 +29,9 @@ void randarr(int* arr, int row, int col) {
         }
     }
 }
-// работа в матрице
+// СЂР°Р±РѕС‚Р° РІ РјР°С‚СЂРёС†Рµ
 void workarr(int* arr, int row, int col) {
-    int sum, max = 0, cout = -1;
+    int sum, max = 0, num = -1;
     for (int j = 0; j < col; j++) {
         int sum = 0;
         for (int i = 0; i < row; i++) {
@@ -39,11 +39,11 @@ void workarr(int* arr, int row, int col) {
         }
         if (sum > max) {
             max = sum;
-            cout = j;
+            num = j;
         }
     }
-    if (cout >= 0) {
-        for (int j = cout; j < col; j++) {
+    if (num >= 0) {
+        for (int j = num; j < col; j++) {
             for (int i = 0; i < row; i++) {
                 *(arr + i * col + j) = *(arr + i * col + j + 1);
             }
