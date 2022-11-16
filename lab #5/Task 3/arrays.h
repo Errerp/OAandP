@@ -15,7 +15,7 @@ void printarr(int* arr, int row, int col) {
 void inputarr(int* arr, int row, int col) {
     for (int i = 0; i < row; ++i) {
         for (int j = 0; j < col; ++j) {
-            while (scanf_s("%d", arr + col * i + j) != 1 || *(arr + i * col + j) % 1 != 0) {
+            while (scanf_s("%d", arr + col * i + j) != 1 || *(arr + i * col + j) % 1 != 0|| getchar() != '\n') {
                 printf("Error. Try again: ");
             }
         }
