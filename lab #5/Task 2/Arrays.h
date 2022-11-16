@@ -6,7 +6,7 @@
 void printarr(int* arr, int row, int col) {
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
-            printf("%d\t", *(arr + col * i + j));
+            printf("%5d ", *(arr + col * i + j));
         }
         printf("\n");
     }
