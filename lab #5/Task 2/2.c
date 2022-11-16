@@ -1,23 +1,44 @@
+/*
+    В двумерной матрице размером NxM найти столбец 
+    с наибольшей суммой элементов и удалить его.
+*/
 #include "Arrays.h"
+
+void inputsize(int* row, int * col) {
+    int x;
+    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
+        printf("Error. Try again: ");
+    }
+    *row = x;
+    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
+        printf("Error. Try again: ");
+    }
+    *col = x;
+}
+
+int* memory(int row, int col)
+{
+    int* arr = (int*)malloc(row * col * sizeof(int));
+    return arr;
+}
+
+void chooseinput(int* mt) {
+    int x;
+    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
+        printf("Error. Try again: ");
+    }
+    *mt = x;
+}
 
 int main()
 {
-    int i, j, row, col, mt;
+    int i, j, row, col, mt, *arr;
     srand(time(NULL));
-    printf("Input the size row: ");
-    while (scanf_s("%d", &row) != 1 || row % 1!= 0 || row > 100 || row < 1) {
-        printf("Error. Try again: ");
-    }
-    printf("Input the size column: ");
-    while (scanf_s("%d", &col) != 1 || col  % 1 != 0 || col > 100 || col < 1) {
-        printf("Error. Try again: ");
-    }
-    int* arr = (int*)malloc(row * col * sizeof(int));
-        printf("Select the array input type:\n1)Own\n2)Random\n");
-    while (scanf_s("%d", &mt) != 1 || col % 1 != 0 || mt < 1 || mt > 2) {
-        printf("Error. Try again: ");
-    }
-    
+    printf("Input the size row and column: ");
+        inputsize(&row,&col);
+        arr = memory(row,col);
+    printf("Select the array input type:\n1)Own\n2)Random\n");
+        chooseinput(&mt);
     switch (mt)
     {
         case 1:
@@ -31,8 +52,8 @@ int main()
         printf("\nSource array: \n");
             printarr(arr, row, col);
             workarr(arr, row, col);
-            col--;
-        printf("\nThe resulting array: \n");
+                col--;
+    printf("\nThe resulting array: \n");
             printarr(arr, row, col);
     return 0;
 }
