@@ -1,45 +1,34 @@
 #include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
 
-// печать массива
-void printarr(int* arr, int row, int col) {
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            printf("%5d ", *(arr + col * i + j));
-        }
-        printf("\n");
+// print arr
+void printarr(int* arr, int n) {
+    for (int i = 0; i < n; i++) {
+            printf("%d ", *(arr + i) );
     }
 }
-// ввод элементов матрицы
-void inputarr(int* arr, int row, int col) {
-    for (int i = 0; i < row; ++i) {
-        for (int j = 0; j < col; ++j) {
-            while (scanf_s("%d", arr + col * i + j) != 1 || *(arr + i * col + j) % 1 != 0) {
+// Input array elements: 
+void inputarr(int* arr, int n) {
+    for (int i = 0; i < n; i++) {
+        while (scanf_s("%d", &*(arr + i)) != 1 || *(arr + i) % 1 != 0 || *(arr + i) < 1 || getchar() != '\n') {
                 printf("Error. Try again: ");
-            }
         }
     }
 }
-// ввод элементов матрицы рандомом
-void randarr(int* arr, int row, int col) {
-    for (int i = 0; i < row; ++i) {
-        for (int j = 0; j < col; ++j) {
-            *(arr + i * col + j) = rand() % 200 - 100;
+
+// work in arr
+void workarr(int* arr, int n, int* count) {
+    int i, j;
+    int p = 0;
+    for (i = 0; i < n; i++) {
+        if (arr[i] > 9 && arr[i] < 100) {
+            for (j = i; j < n; j++) {
+                arr[j] = arr[j + 1];
+            }
+            p++;
+            i--;
         }
     }
+    *count = p;
 }
-// работа в матрице
-void workarr(int* arr, int row, int col) {
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            if (j < i) {
-                printf("");
-            }
-            else {
-                printf("%5d ", *(arr + col * i + j));
-            }
-        }
-        printf("\n");
-    }
-}
+
