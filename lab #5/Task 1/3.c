@@ -8,13 +8,17 @@ void inputn(int* n) {
     int x;
    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 ||  getchar() != '\n') {
         printf("Error. Try again: ");
+        rewind(stdin);
     }
    *n = x;
 }
-int* memory(int n)
+void* memory(int n)
 {
     int* arr = (int*)malloc(n * sizeof(int));
-    return arr;
+}
+void* rememory(int* arr, int n)
+{
+    arr = realloc(arr, n * sizeof(int));
 }
 
 int main() {
@@ -29,8 +33,8 @@ int main() {
         printarr(arr, n);
         workarr(arr, n, &count);
         n -= count;
+        rememory(arr, n);
     printf("\nThe resulting array: \n");
         printarr(arr, n);
-    free(arr);
     return 0;
 }
