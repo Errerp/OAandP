@@ -4,21 +4,31 @@
 */
 #include "Arrays.h"
 
-void inputsize(int* row, int * col) {
+void inputrow(int* row) {
     int x;
     while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Error. Try again: ");
+        rewind(stdin);
     }
     *row = x;
+}
+void inputcol(int* col) {
+    int x;
     while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Error. Try again: ");
+        rewind(stdin);
     }
     *col = x;
 }
 
-int* memory(int row, int col)
+int** memory(int row, int col)
 {
-    int* arr = (int*)malloc(row * col * sizeof(int));
+    int** arr;
+    arr = (int**)calloc(col, sizeof(int*));
+    for (int j = 0; j < row; j++)
+    {
+        arr[j] = (int*)calloc(col, sizeof(int)); //*(arr + i)
+    }
     return arr;
 }
 
@@ -26,16 +36,19 @@ void chooseinput(int* mt) {
     int x;
     while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Error. Try again: ");
+        rewind(stdin);
     }
     *mt = x;
 }
 
 int main()
 {
-    int i, j, row, col, mt, *arr;
+    int row, col = 0, mt, *arr;
     srand(time(NULL));
-    printf("Input the size row and column: ");
-        inputsize(&row,&col);
+    printf("Input the size row: ");
+        inputrow(&row);
+    printf("Input the size column: ");
+        inputcol(&col);
         arr = memory(row,col);
     printf("Select the array input type:\n1)Own\n2)Random\n");
         chooseinput(&mt);
@@ -51,9 +64,9 @@ int main()
     }
         printf("\nSource array: \n");
             printarr(arr, row, col);
-            workarr(arr, row, col);
-                col--;
+            workarr(arr, row,col);
+            col--;
     printf("\nThe resulting array: \n");
             printarr(arr, row, col);
-    return 0;
+   return 0;
 }
