@@ -68,5 +68,6 @@ int main()
             col--;
     printf("\nThe resulting array: \n");
             printarr(arr, row, col);
+            free(arr);
    return 0;
 }
