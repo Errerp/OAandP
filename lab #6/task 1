@@ -1,1 +1,78 @@
+/*
+    В одномерном массиве выполнить сортировку 
+    положительных элементов методом слияния.
+*/
+#include "function.h"
 
+void inputn(int* n) {
+    int x;
+    while (scanf_s("%d", &x) != 1  || x < 1 || x % 1 != 0 || getchar() != '\n') {
+        printf("Ошибка. Попробуйте снова: ");
+        rewind(stdin);
+    }
+    *n = x;
+}
+void chooseinput(int* mt) {
+    int x;
+    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
+        printf("Ошибка. Попробуйте снова: ");
+        rewind(stdin);
+    }
+    *mt = x;
+}
+void* memory(int n)
+{
+    int* arr = (int*)malloc(n * sizeof(int));
+}
+void* rememory(int* arr, int n)
+{
+    arr = realloc(arr, n * sizeof(int));
+}
+void sravn(int t1, int t2) {
+    if (t1 < t2) {
+        printf("Сортировка слиянем быстрее сортировки пузырьком");
+    }
+    else if (t2 < t1) {
+        printf("Сортировка пузырьком быстрее сортировки слиянем");
+    }
+    else {
+        printf("Две сортировки равны");
+    }
+}
+
+int main() {
+    int  n, mt, *arr,t1, t2,p;
+    setlocale(LC_ALL, "Russian");
+    srand(time(NULL));
+    printf("Введите размер массива: ");
+    inputn(&n);
+        arr = memory(n);
+        printf("Выберите способ ввода:\n1)С клавиатуры\n2)Случайные числа\n");
+        chooseinput(&mt);
+    switch (mt)
+    {
+    case 1:
+        printf("\nВведите элемент массива: \n");
+        inputarr(arr, n);
+        break;
+    case 2:
+        randarr(arr, n);
+        break;
+    }
+    printf("\nНачальный массив:\n");
+        printarr(arr, n);
+        poloz(arr, n,&p);
+        n -= p;
+        arr = rememory(arr,n);
+        sliyan(arr, n,&t1);
+        printf("\nОтсортированный слиянием массив:\n");
+        printarr(arr,n);
+        bubble(arr,n,&t2);
+    printf("\nОтсортированный пузырьком массив:\n");
+        printarr(arr, n);
+        printf("\nВремя сортировки массива слиянием = %i(мс)\n", t1);
+        printf("\nВремя сортировки массива пузырьком = %i(мс)\n\n", t2);
+        sravn(t1, t2);
+        free(arr);
+    return 0;
+}
