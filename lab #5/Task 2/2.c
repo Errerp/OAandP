@@ -2,72 +2,50 @@
     В двумерной матрице размером NxM найти столбец 
     с наибольшей суммой элементов и удалить его.
 */
-#include "Arrays.h"
+#include "arrays.h"
 
-void inputrow(int* row) {
+void inputn(int* n) {
     int x;
     while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Error. Try again: ");
         rewind(stdin);
     }
-    *row = x;
+    *n = x;
 }
-void inputcol(int* col) {
+void inputm(int* m) {
     int x;
     while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Error. Try again: ");
         rewind(stdin);
     }
-    *col = x;
+    *m = x;
 }
 
-int** memory(int row, int col)
+int** memory(int n, int m)
 {
     int** arr;
-    arr = (int**)calloc(col, sizeof(int*));
-    for (int j = 0; j < row; j++)
-    {
-        arr[j] = (int*)calloc(col, sizeof(int)); //*(arr + i)
+    arr = (int**)malloc(sizeof(int*) * n);
+    for (int i = 0; i < n; i++){
+        *(arr + i) = (int*)malloc(sizeof(int) * m);
     }
     return arr;
 }
 
-void chooseinput(int* mt) {
-    int x;
-    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
-        printf("Error. Try again: ");
-        rewind(stdin);
-    }
-    *mt = x;
-}
-
 int main()
 {
-    int row, col = 0, mt, *arr;
+    int n, m = 0, mt, *arr;
     srand(time(NULL));
     printf("Input the size row: ");
-        inputrow(&row);
+        inputn(&n);
     printf("Input the size column: ");
-        inputcol(&col);
-        arr = memory(row,col);
-    printf("Select the array input type:\n1)Own\n2)Random\n");
-        chooseinput(&mt);
-    switch (mt)
-    {
-        case 1:
-            printf("\nInput array elements: \n");
-            inputarr(arr, row, col);
-            break;
-        case 2:
-            randarr(arr, row, col);
-            break;
-    }
+        inputm(&m);
+        arr = memory(n,m);
+    input_matr(arr, n, m);
         printf("\nSource array: \n");
-            printarr(arr, row, col);
-            workarr(arr, row,col);
-            col--;
+            print_matr(arr, n, m);
+            arr = work_in_mat(arr, n, m);
+            m--;
     printf("\nThe resulting array: \n");
-            printarr(arr, row, col);
-            free(arr);
+            print_matr(arr, n, m);
    return 0;
 }
