@@ -49,8 +49,11 @@ int** work_in_mat(int* arr, int n, int m)
         {
             *(arr + i * n + j) = *(arr + i * n + j + 1);
         }
-        m--;
-        arr = (int**)realloc(arr, m * sizeof(int*));
+    }
+    m--;
+    arr = (int**)realloc(arr, m * sizeof(int*));
+    for (int i = 0; i < n; i++) {
+        *(arr + i) = (int*)realloc(arr,m * sizeof(int));
     }
     return arr;
 }
