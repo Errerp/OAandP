@@ -30,13 +30,13 @@ void* rememory(int* arr, int n)
 }
 void sravn(int t1, int t2) {
     if (t1 < t2) {
-        printf("Сортировка слиянем быстрее сортировки пузырьком");
+        printf("Сортировка слиянем быстрее сортировки пузырьком\n");
     }
     else if (t2 < t1) {
-        printf("Сортировка пузырьком быстрее сортировки слиянем");
+        printf("Сортировка пузырьком быстрее сортировки слиянем\n");
     }
     else {
-        printf("Две сортировки равны");
+        printf("Две сортировки по времени равны\n");
     }
 }
 
@@ -67,6 +67,9 @@ int main() {
         merge(arr, n,&t1);
         printf("\n\nОтсортированный слиянием массив:\n\n");
         printarr(arr,n);
+        badmerge(arr, n);
+        printf("\n\nХудшая сортировка слиянием:\n\n");
+        printarr(arr, n);
         bubble(arr,n,&t2);
 		  arr = rememory(arr,n);
     printf("\n\nОтсортированный пузырьком массив:\n\n");
@@ -74,9 +77,6 @@ int main() {
         printf("\n\nВремя сортировки массива слиянием = %i(мс)\n", t1);
         printf("\nВремя сортировки массива пузырьком = %i(мс)\n\n", t2);
         sravn(t1, t2);
-        badmerge(arr, n);
-        printf("\n\nХудшая сортировка слиянием:\n\n");
-        printarr(arr, n);
         free(arr);
     return 0;
 }
