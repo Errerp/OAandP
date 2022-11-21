@@ -12,14 +12,6 @@ void inputn(int* n) {
     }
    *n = x;
 }
-void* memory(int n)
-{
-    int* arr = (int*)malloc(n * sizeof(int));
-}
-void* rememory(int* arr, int n)
-{
-    arr = realloc(arr, n * sizeof(int));
-}
 
 int main() {
     int  n, count = 0;
@@ -33,8 +25,9 @@ int main() {
         printarr(arr, n);
         workarr(arr, n, &count);
         n -= count;
-        rememory(arr, n);
+        arr = rememory(arr, n);
     printf("\nThe resulting array: \n");
         printarr(arr, n);
+        free(arr);
     return 0;
 }
