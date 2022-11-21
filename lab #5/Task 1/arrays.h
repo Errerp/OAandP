@@ -1,6 +1,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+void* memory(int n)
+{
+    int* arr = (int*)malloc(n * sizeof(int));
+}
+void* rememory(int* arr, int n)
+{
+    arr = (int*)realloc(arr, n * sizeof(int*));
+    return arr;
+}
 // печать массива
 void printarr(int* arr, int n) {
     for (int i = 0; i < n; i++) {
