@@ -59,20 +59,24 @@ int main() {
         randarr(arr, n);
         break;
     }
-    printf("\nНачальный массив:\n");
+    printf("\nНачальный массив:\n\n");
         printarr(arr, n);
         poloz(arr, n,&p);
         n -= p;
         arr = rememory(arr,n);
-        sliyan(arr, n,&t1);
-        printf("\nОтсортированный слиянием массив:\n");
+        merge(arr, n,&t1);
+        printf("\n\nОтсортированный слиянием массив:\n\n");
         printarr(arr,n);
         bubble(arr,n,&t2);
-    printf("\nОтсортированный пузырьком массив:\n");
+		  arr = rememory(arr,n);
+    printf("\n\nОтсортированный пузырьком массив:\n\n");
         printarr(arr, n);
-        printf("\nВремя сортировки массива слиянием = %i(мс)\n", t1);
+        printf("\n\nВремя сортировки массива слиянием = %i(мс)\n", t1);
         printf("\nВремя сортировки массива пузырьком = %i(мс)\n\n", t2);
         sravn(t1, t2);
+        badmerge(arr, n);
+        printf("\n\nХудшая сортировка слиянием:\n\n");
+        printarr(arr, n);
         free(arr);
     return 0;
 }
