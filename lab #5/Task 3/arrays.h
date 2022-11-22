@@ -2,42 +2,53 @@
 #include <time.h>
 #include <stdio.h>
 
-// печать массива
-void printarr(int* arr, int row, int col) {
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            printf("%5d ", *(arr + col * i + j));
-        }
-        printf("\n");
-    }
+//выделение памяти под матрицу
+int* memory(int n, int m)
+{
+	int** matr = (int**)malloc(n * sizeof(int*));
+	return matr;
 }
-// ввод элементов матрицы
-void inputarr(int* arr, int row, int col) {
-    for (int i = 0; i < row; ++i) {
-        for (int j = 0; j < col; ++j) {
-            while (scanf_s("%d", arr + col * i + j) != 1 || *(arr + i * col + j) % 1 != 0|| getchar() != '\n') {
-                printf("Error. Try again: ");
-                rewind(stdin);
-            }
-        }
-    }
+// печать матрицы
+void print_matr(int** matr, int n, int m)
+{
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			printf("%5d", *(*(matr + i) + j));
+		}
+		printf("\n");
+	}
+}
+
+// ввод элементов матрицы c клавиатуры
+void input_matr(int** matr, int n, int m)
+{
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			printf("input element [%d][%d]\n", i + 1, j + 1);
+			while (scanf_s("%d", *(matr + i) + j) != 1) {
+				printf("input error\n");
+				rewind(stdin);
+			}
+		}
+	}
 }
 // ввод элементов матрицы рандомом
-void randarr(int* arr, int row, int col) {
-    for (int i = 0; i < row; ++i) {
-        for (int j = 0; j < col; ++j) {
-            *(arr + i * col + j) = rand() % 200 - 100;
-        }
-    }
+void rand_matr(int** matr, int n, int m) {
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			*(*(matr + i) + j) = rand() % 6;
+		}
+	}
 }
 // работа в матрице
-void workarr(int* arr, int row, int col) {
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            if (i + j < row) {
-                printf("%5d ", *(arr + col * i + j));
-            }
-        }
-        printf("\n");
-    }
+void work_in_matr(int** matr, int n, int m)
+{
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (i + j < n) {
+				printf("%5d ", *(*(matr + i) + j));
+			}
+		}
+		printf("\n");
+	}
 }
