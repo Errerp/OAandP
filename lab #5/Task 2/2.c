@@ -3,7 +3,7 @@
     с наибольшей суммой элементов и удалить его.(удаляет первый если несколько)
 */
 #include "arrays.h"
-void inputrow(int* m) {
+void inputcol(int* m) {
 	int x;
 	while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
 		printf("Error. Try again: ");
@@ -11,7 +11,7 @@ void inputrow(int* m) {
 	}
 	*m = x;
 }
-void inputcol(int* n) {
+void inputrow(int* n) {
 	int x;
 	while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
 		printf("Error. Try again: ");
@@ -40,10 +40,10 @@ int chooseinput(int *matr,int n,int m) {
 void main() {
 	int  m, n, ** matr;
 	srand(time(NULL));
-	printf("Input the size column: ");
-		inputcol(&n);
 	printf("Input the size row: ");
-		inputrow(&m);
+		inputrow(&n);
+	printf("Input the size column: ");
+		inputcol(&m);
 		matr = memory(n,m);
 	printf("Select the array input type:\n1)Own\n2)Random\n");
 		chooseinput(matr,n,m);
