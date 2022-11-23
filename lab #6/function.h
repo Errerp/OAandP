@@ -3,6 +3,18 @@
 #include <stdio.h>
 #include "locale.h"
 
+//работа с памятью массива
+void* memoryarr(int n)
+{
+    int* arr = (int*)malloc(n * sizeof(int));
+}
+void* rememoryarr(int* arr, int n)
+{
+    arr = (int*)realloc(arr, n * sizeof(int*));
+}
+void* libertadarr(int* arr) {
+    free(arr);
+}
 // печать массива
 void printarr(int* arr, int n) {
     for (int i = 0; i < n; i++) {
@@ -24,36 +36,6 @@ void randarr(int* arr, int n) {
             *(arr + i) = rand() % 2000 - 1000;
     }
 }
-
-// печать матрицы
-void printmat(int* arr, int n, int m) {
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            printf("%5d ", *(arr + i * n + j));
-        }
-        printf("\n");
-    }
-}
-// ввод элементов матрицы
-void inputmat(int* arr, int n, int m) {
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-            while (scanf_s("%d", arr + i * n + j) != 1 || *(arr + i * n + j) % 1 != 0 || getchar() != '\n') {
-                printf("Ошибка. Попробуйте снова: ");
-                rewind(stdin);
-            }
-        }
-    }
-}
-// ввод элементов матрицы рандомом
-void randmat(int* arr, int n, int m) {
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-            *(arr + i * n + j) = rand() % 200 - 100;
-        }
-    }
-}
-
 // выбор положительных
 void poloz(int* arr, int n, int*p) {
     int i, j,count = 0;
@@ -176,5 +158,34 @@ void bubble(int* arr, int n,int *t2) {
     }
     fTimeStop = clock() * 1000 / CLOCKS_PER_SEC;
     *t2 = fTimeStop - fTimeStart;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// печать матрицы
+void printmat(int* arr, int n, int m) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("%5d ", *(arr + i * n + j));
+        }
+        printf("\n");
+    }
+}
+// ввод элементов матрицы
+void inputmat(int* arr, int n, int m) {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            while (scanf_s("%d", arr + i * n + j) != 1 || *(arr + i * n + j) % 1 != 0 || getchar() != '\n') {
+                printf("Ошибка. Попробуйте снова: ");
+                rewind(stdin);
+            }
+        }
+    }
+}
+// ввод элементов матрицы рандомом
+void randmat(int* arr, int n, int m) {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            *(arr + i * n + j) = rand() % 200 - 100;
+        }
+    }
 }
 // сортировка методом выбора
