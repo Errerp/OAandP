@@ -5,20 +5,25 @@
 //выделение памяти под матрицу
 int* memory(int n, int m)
 {
-	int **matr = (int**)malloc(n * sizeof(int*));
+	int** matr = (int**)malloc(n * sizeof(int*));
 	for (int i = 0; i < n; i++)
 		*(matr + i) = (int*)calloc(m, sizeof(int));
 	return matr;
 }
+void* liberdat(int n, int** matr) {
+	for (int i = 0; i < n; i++)
+		free(*(matr + i));
+	free(matr);
+}
 // печать матрицы
-void print_matr(int** matr, int n,int m)
+void print_matr(int** matr, int n, int m)
 {
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            printf("%5d", *(*(matr + i) + j));
-        }
-        printf("\n");
-    }
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			printf("%5d", *(*(matr + i) + j));
+		}
+		printf("\n");
+	}
 }
 
 // ввод элементов матрицы c клавиатуры
