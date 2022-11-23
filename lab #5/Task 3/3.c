@@ -51,6 +51,6 @@ void main() {
 		print_matr(matr, n, m);
 	printf("\nThe resulting array: \n");
 		work_in_matr(matr, n, m);
-			liberdat(n, matr);
-	printf("\n");
+			libertad(n, matr);
+	return 0;
 }
