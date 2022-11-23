@@ -1,6 +1,6 @@
 /*
-    В двумерной матрице размером NxM найти столбец 
-    с наибольшей суммой элементов и удалить его.(удаляет первый если несколько)
+	В двумерной матрице размером NxM найти столбец
+	с наибольшей суммой элементов и удалить его.(удаляет первый если несколько)
 */
 #include "arrays.h"
 void inputcol(int* m) {
@@ -19,7 +19,7 @@ void inputrow(int* n) {
 	}
 	*n = x;
 }
-int chooseinput(int *matr,int n,int m) {
+int chooseinput(int* matr, int n, int m) {
 	int x;
 	while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
 		printf("Error. Try again: ");
@@ -44,15 +44,15 @@ void main() {
 		inputrow(&n);
 	printf("Input the size column: ");
 		inputcol(&m);
-		matr = memory(n,m);
+	matr = memory(n, m);
 	printf("Select the array input type:\n1)Own\n2)Random\n");
-		chooseinput(matr,n,m);
+		chooseinput(matr, n, m);
 	printf("\nSource array: \n");
 		print_matr(matr, n, m);
-		work_in_matr(matr, n, m);
+			work_in_matr(matr, n, m);
 	m--;
 	printf("\nThe resulting array: \n");
 		print_matr(matr, n, m);
-		free(matr);
+		libertad(n, matr);
 	printf("\n");
 }
