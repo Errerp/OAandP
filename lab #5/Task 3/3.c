@@ -1,6 +1,6 @@
 /*
-	Из двумерной матрицы размером NxM удалить элементы, 
-    находящиеся ниже побочной диагонали.
+	Из двумерной матрицы размером NxM удалить элементы,
+	находящиеся ниже побочной диагонали.
 */
 #include "arrays.h"
 void inputcol(int* m) {
@@ -44,13 +44,13 @@ void main() {
 		inputrow(&n);
 	printf("Input the size column: ");
 		inputcol(&m);
-		matr = memory(n, m);
+	matr = memory(n, m);
 	printf("Select the array input type:\n1)Own\n2)Random\n");
 		chooseinput(matr, n, m);
 	printf("\nSource array: \n");
 		print_matr(matr, n, m);
 	printf("\nThe resulting array: \n");
 		work_in_matr(matr, n, m);
-		free(matr);
+			liberdat(n, matr);
 	printf("\n");
 }
