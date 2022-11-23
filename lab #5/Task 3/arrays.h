@@ -6,7 +6,14 @@
 int* memory(int n, int m)
 {
 	int** matr = (int**)malloc(n * sizeof(int*));
+	for (int i = 0; i < n; i++)
+		*(matr + i) = (int*)calloc(m, sizeof(int));
 	return matr;
+}
+void* liberdat(int n, int** matr) {
+	for (int i = 0; i < n; i++)
+		free(*(matr + i));
+	free(matr);
 }
 // печать матрицы
 void print_matr(int** matr, int n, int m)
@@ -36,7 +43,7 @@ void input_matr(int** matr, int n, int m)
 void rand_matr(int** matr, int n, int m) {
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < m; ++j) {
-			*(*(matr + i) + j) = rand() % 6;
+			*(*(matr + i) + j) = rand() % 201 - 100;
 		}
 	}
 }
@@ -47,6 +54,10 @@ void work_in_matr(int** matr, int n, int m)
 		for (int j = 0; j < m; j++) {
 			if (i + j < n) {
 				printf("%5d ", *(*(matr + i) + j));
+			}
+			else {
+				*(matr + i) = realloc(*(matr + i), (m - 1) * sizeof(int));
+				m--;
 			}
 		}
 		printf("\n");
