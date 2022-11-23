@@ -10,18 +10,21 @@ void* rememory(int* arr, int n)
 {
     arr = (int*)realloc(arr, n * sizeof(int*));
 }
+void* libertad(int* arr) {
+    free(arr);
+}
 // печать массива
 void printarr(int* arr, int n) {
     for (int i = 0; i < n; i++) {
-            printf("%d ", *(arr + i) );
+        printf("%d ", *(arr + i));
     }
 }
 // ввод элементов массива
 void inputarr(int* arr, int n) {
     for (int i = 0; i < n; i++) {
         while (scanf_s("%d", &*(arr + i)) != 1 || *(arr + i) % 1 != 0 || *(arr + i) < 1 || getchar() != '\n') {
-                printf("Error. Try again: ");
-                rewind(stdin);
+            printf("Error. Try again: ");
+            rewind(stdin);
         }
     }
 }
