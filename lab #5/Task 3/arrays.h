@@ -10,7 +10,7 @@ int* memory(int n, int m)
 		*(matr + i) = (int*)calloc(m, sizeof(int));
 	return matr;
 }
-void* liberdat(int n, int** matr) {
+void* libertad(int n, int** matr) {
 	for (int i = 0; i < n; i++)
 		free(*(matr + i));
 	free(matr);
