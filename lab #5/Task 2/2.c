@@ -54,5 +54,5 @@ void main() {
 	printf("\nThe resulting array: \n");
 		print_matr(matr, n, m);
 		libertad(n, matr);
-	printf("\n");
+	return 0;
 }
