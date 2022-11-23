@@ -1,1 +1,67 @@
+/*
+	В матрице размером NxM выполнить сортировку столбцов по убыванию 
+    количества элементов встречающихся более одного раза методом выбора.
+*/
+#include "function.h"
 
+void inputn(int* n) {
+    int x;
+    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
+        printf("Ошибка. Попробуйте снова: ");
+        rewind(stdin);
+    }
+    *n = x;
+}
+void inputm(int* m) {
+    int x;
+    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
+        printf("Ошибка. Попробуйте снова: ");
+        rewind(stdin);
+    }
+    *m = x;
+}
+
+int* memory(int n, int m)
+{
+    int* arr = (int*)malloc(n * m * sizeof(int));
+    return arr;
+}
+
+int chooseinput(int* matr, int n, int m) {
+    int x;
+    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
+        printf("Ошибка. Попробуйте снова: ");
+        rewind(stdin);
+    }
+    switch (x)
+    {
+    case 1:
+        printf("\nВведите элемент матрицы: \n");
+        input_matr(matr, n, m);
+        break;
+    case 2:
+        rand_matr(matr, n, m);
+        break;
+    }
+    return matr;
+}
+
+int main()
+{
+    int  m, n, ** matr;
+    setlocale(LC_ALL, "Russian");
+    srand(time(NULL));
+    printf("Введите количество строк: ");
+        inputn(&n);
+    printf("Введите количество колонок: ");
+        inputm(&m);
+        matr = memory(n, m);
+    printf("Выберите способ ввода:\n1)С клавиатуры\n2)Случайные числа\n");
+        chooseinput(matr, n, m);
+    printf("\nНачальная матрица: \n");
+        print_matr(matr, n, m);
+    printf("\nОтсортированная матрица: \n");
+    
+        libertad(n, matr);
+    return 0;
+}
