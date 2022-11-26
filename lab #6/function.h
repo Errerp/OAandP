@@ -182,15 +182,14 @@ void print_matr(int** matr, int n, int m)
         printf("\n");
     }
 }
-
 // ввод элементов матрицы c клавиатуры
 void input_matr(int** matr, int n, int m)
 {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            printf("input element [%d][%d]\n", i + 1, j + 1);
+            printf("Введите элемент [%d][%d]\n", i + 1, j + 1);
             while (scanf_s("%d", *(matr + i) + j) != 1) {
-                printf("input error\n");
+                printf("Ошибка. Попробуйте снова:\n");
                 rewind(stdin);
             }
         }
@@ -205,3 +204,38 @@ void rand_matr(int** matr, int n, int m) {
     }
 }
 // сортировка методом выбора
+void vybor(int** matr, int n, int m){
+    int num, max, count;
+    for (int k = 0; k < m; k++) {
+        num = 0;
+        max = 0;
+        for (int j = k; j < m; j++) {
+            count = 0;
+            for (int z = 0; z < 6; z++) {
+                int temp = 0;
+                for (int i = 0; i < m; i++) {
+                    if (matr[i][j] == z) {
+                        temp++;
+                    }
+                }
+                if (temp > count) {
+                    count = temp;
+                }
+            }
+            if (count > max) {
+                max = count;
+                num = j;
+            }
+        }
+        if (num != k && num != 0) {
+            for (int i = 0; i < n; i++) {
+                int t = matr[i][k];
+                matr[i][k] = matr[i][num];
+                matr[i][num] = t;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++){
+        *(matr + i) = realloc(*(matr + i), m * sizeof(int));
+    }
+}
