@@ -13,10 +13,10 @@ void poloz(int* arr, int n, int* p);
 void merge(int* arr, int n, int* t1);
 void badmerge(int* arr, int n);
 void bubble(int* arr, int n, int* t2);
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                                                                                                                                    
+////////////////////////////////////////                                                                                                                                 
 int* memory(int n, int m);
 void* libertad(int n, int** matr);
 void print_matr(int** matr, int n, int m);
 void input_matr(int** matr, int n, int m);
 void rand_matr(int** matr, int n, int m);
-// сортировка методом выбора
+void vybor(int** matr, int n, int m);
