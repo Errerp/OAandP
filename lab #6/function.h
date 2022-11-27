@@ -207,14 +207,14 @@ void rand_matr(int** matr, int n, int m) {
 void vybor(int** matr, int n, int m){
     int num, max, count;
     for (int k = 0; k < m; k++) {
-        num = 0;
+        num = k;
         max = 0;
         for (int j = k; j < m; j++) {
             count = 0;
-            for (int z = 0; z < 6; z++) {
+            for (int z = 0; z < m; z++) {
                 int temp = 0;
                 for (int i = 0; i < m; i++) {
-                    if (matr[i][j] == z) {
+                    if (matr[i][j] == matr[z][j]) {
                         temp++;
                     }
                 }
@@ -227,7 +227,7 @@ void vybor(int** matr, int n, int m){
                 num = j;
             }
         }
-        if (num != k && num != 0) {
+        if (num != k) {
             for (int i = 0; i < n; i++) {
                 int t = matr[i][k];
                 matr[i][k] = matr[i][num];
