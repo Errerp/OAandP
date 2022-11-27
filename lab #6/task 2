@@ -52,10 +52,10 @@ int main()
         matr = memory(n, m);
     printf("Выберите способ ввода:\n1)С клавиатуры\n2)Случайные числа\n");
         chooseinput(matr, n, m);
-    printf("\nНачальная матрица: \n");
+    printf("\nНачальная матрица:\n\n");
         print_matr(matr, n, m);
             vybor(matr, n, m);
-    printf("\nОтсортированная матрица: \n");
+    printf("\nОтсортированная матрица:\n\n");
         print_matr(matr, n, m);
             libertad(n, matr);
     return 0;
