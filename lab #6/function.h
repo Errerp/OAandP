@@ -211,10 +211,10 @@ void vybor(int** matr, int n, int m){
         max = 0;
         for (int j = k; j < m; j++) {
             count = 0;
-            for (int z = 0; z < m; z++) {
+            for (int z = 0; z < 6; z++) {
                 int temp = 0;
                 for (int i = 0; i < m; i++) {
-                    if (matr[i][j] == matr[z][j]) {
+                    if (matr[i][j] == 6) {
                         temp++;
                     }
                 }
