@@ -14,7 +14,7 @@ void inputn(int* n) {
 }
 int chooseinput(int* arr, int n) {
     int x;
-    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
+    while (scanf_s("%d", &x) != 1 || x > 2 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Error. Try again: ");
         rewind(stdin);
     }
