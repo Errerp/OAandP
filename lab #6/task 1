@@ -4,7 +4,7 @@
 */
 #include "function.h"
 
-void inputn(int* n) {
+void input_n(int* n) {
     int x;
     while (scanf_s("%d", &x) != 1  || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Ошибка. Попробуйте снова: ");
@@ -12,7 +12,7 @@ void inputn(int* n) {
     }
     *n = x;
 }
-int chooseinput(int* arr, int n) {
+int choose_input(int* arr, int n,int* mass) {
     int x;
     while (scanf_s("%d", &x) != 1 || x > 2 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Error. Try again: ");
@@ -22,13 +22,13 @@ int chooseinput(int* arr, int n) {
     {
     case 1:
         printf("\nВведите элемент массива: \n");
-        inputarr(arr, n);
+        input_arr(arr, n,mass);
         break;
     case 2:
-        randarr(arr, n);
+        rand_arr(arr, n,mass);
         break;
     }
-    return arr;
+    return arr, mass;
 }
 
 void sravn(int t1, int t2) {
@@ -44,33 +44,36 @@ void sravn(int t1, int t2) {
 }
 
 int main() {
-    int  n, *arr,t1, t2,p;
+    int  n, *arr,t1, t2,p,*mass;
     setlocale(LC_ALL, "Russian");
     srand(time(NULL));
     printf("Введите размер массива: ");
-    inputn(&n);
-        arr = memoryarr(n);
+    input_n(&n);
+        arr = memory_arr(n);
+        mass = memory_mass(n);
     printf("Выберите способ ввода:\n1)С клавиатуры\n2)Случайные числа\n");
-        chooseinput(arr, n);
+        choose_input(arr, n, mass);
     printf("\nНачальный массив:\n\n");
-        printarr(arr, n);
-            poloz(arr, n,&p);
-    n -= p;
-                arr = rememoryarr(arr,n);
-                    merge(arr, n,&t1);
+        print_arr(arr, n);
     printf("\n\nОтсортированный слиянием массив:\n\n");
-        printarr(arr,n);
-            badmerge(arr, n);
-                arr = rememoryarr(arr, n);
+    merge(mass, n,&t1);
+    mass = rememory_mass(mass, n);
+    zamena(mass,arr, n);
+        arr = rememory_arr(arr, n);
+        print_arr(arr,n);
+            bad_merge(mass, n);
+            mass = rememory_mass(mass, n);
+            zamena(mass, arr, n);
     printf("\n\nХудшая сортировка слиянием:\n\n");
-        printarr(arr, n);
-            bubble(arr,n,&t2);
-		    arr = rememoryarr(arr,n);
+        print_arr(arr, n);
+            bubble(mass,n,&t2);
+            zamena(mass, arr, n);
+            mass = rememory_mass(mass, n);
     printf("\n\nОтсортированный пузырьком массив:\n\n");
-        printarr(arr, n);
+        print_arr(arr, n);
     printf("\n\nВремя сортировки массива слиянием = %i(мс)\n", t1);
     printf("\nВремя сортировки массива пузырьком = %i(мс)\n\n", t2);
         sravn(t1, t2);
-            libertadarr(arr);
+            libertad_arr(arr, mass);
     return 0;
 }
