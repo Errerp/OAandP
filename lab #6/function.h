@@ -205,16 +205,26 @@ void rand_matr(int** matr, int n, int m) {
 }
 // сортировка методом выбора
 void vybor(int** matr, int n, int m){
-    int num, max, count;
+    int num, max, count, min = 100, maks = -100;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            if (*(*(matr + i) + j) > maks) {
+                maks = *(*(matr + i) + j);
+            }
+            if (*(*(matr + i) + j) < min) {
+                min = *(*(matr + i) + j);
+            }
+        }
+    }
     for (int k = 0; k < m; k++) {
         num = k;
         max = 0;
         for (int j = k; j < m; j++) {
             count = 0;
-            for (int z = 0; z < 6; z++) {
+            for (int z = min; z < maks; z++) {
                 int temp = 0;
                 for (int i = 0; i < m; i++) {
-                    if (matr[i][j] == 6) {
+                    if (matr[i][j] == z) {
                         temp++;
                     }
                 }
