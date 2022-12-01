@@ -4,7 +4,7 @@
 */
 #include "function.h"
 
-void inputn(int* n) {
+void input_n(int* n) {
     int x;
     while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Ошибка. Попробуйте снова: ");
@@ -12,7 +12,7 @@ void inputn(int* n) {
     }
     *n = x;
 }
-void inputm(int* m) {
+void input_m(int* m) {
     int x;
     while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Ошибка. Попробуйте снова: ");
@@ -21,7 +21,7 @@ void inputm(int* m) {
     *m = x;
 }
 
-int chooseinput(int* matr, int n, int m) {
+int choose_input(int* matr, int n, int m) {
     int x;
     while (scanf_s("%d", &x) != 1 || x > 2 || x < 1 || x % 1 != 0 || getchar() != '\n') {
         printf("Ошибка. Попробуйте снова: ");
@@ -46,12 +46,12 @@ int main()
     setlocale(LC_ALL, "Russian");
     srand(time(NULL));
     printf("Введите количество строк: ");
-        inputn(&n);
+        input_n(&n);
     printf("Введите количество колонок: ");
-        inputm(&m);
+        input_m(&m);
         matr = memory(n, m);
     printf("Выберите способ ввода:\n1)С клавиатуры\n2)Случайные числа\n");
-        chooseinput(matr, n, m);
+        choose_input(matr, n, m);
     printf("\nНачальная матрица:\n\n");
         print_matr(matr, n, m);
             vybor(matr, n, m);
