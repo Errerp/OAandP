@@ -30,7 +30,7 @@ void print_arr(int* arr, int n) {
 // ввод элементов массива
 void input_arr(int* arr, int n, int* mass) {
     for (int i = 0; i < n; i++) {
-        while (scanf_s("%d", &*(arr + i)) != 1 || *(arr + i) % 1 != 0 || *(arr + i) < 1 || getchar() != '\n') {
+        while (scanf_s("%d", &*(arr + i)) != 1 || *(arr + i) % 1 != 0 || getchar() != '\n') {
             printf("Ошибка. Попробуйте снова: ");
             rewind(stdin);
         }
