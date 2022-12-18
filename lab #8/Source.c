@@ -4,11 +4,11 @@ int main(int argc, char** argv)
 {
 	setlocale(LC_ALL, "Russian");
 	if (argc == 1) {
-		printf("Ошибка.Нет аргумента");
+		printf("РћС€РёР±РєР°.РќРµС‚ Р°СЂРіСѓРјРµРЅС‚Р°");
 		return 0;
 	}
-	quickSort(argv, 0, argc - 1 - 1, &count_chet_words);
-	printf("Сортировка строк Хоаром:\n");
+	quick_sort(argv, 0, argc - 1, &count_chet_words);
+	printf("РЎРѕСЂС‚РёСЂРѕРІРєР° СЃС‚СЂРѕРє РҐРѕР°СЂРѕРј:\n");
 	type(argc, argv);
 	return 0;
 }
