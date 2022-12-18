@@ -1,28 +1,5 @@
 #include "func.h"
 
-char* initString(const char* text)
-{
-    int stringSize = stringLength(text);
-    char* string = malloc((stringSize + 1) * sizeof(char));
-
-    for (int i = 0; i < stringSize; i++)
-        string[i] = text[i];
-
-    string[stringSize] = '\0';
-
-    return string;
-}
-
-int stringLength(const char* text)
-{
-    int length = 0;
-
-    while (text[length] != '\0')
-        length++;
-
-    return length;
-}
-
 int is_letter(char string) {
     if ((string >= 'a' && string <= 'z') || (string >= 'A' && string <= 'Z'))
         return 1;
@@ -79,17 +56,17 @@ int partition(char** strings, int left, int right, int(*compareFunc)(char*))
     return pivotIndex;
 }
 
-void quickSort(char** strings, int left, int right, int(*compareFunc)(char*))
+void quick_sort(char** strings, int left, int right, int(*compareFunc)(char*))
 {
     if (left >= right)
         return;
 
     int p = partition(strings, left, right, compareFunc);
 
-    quickSort(strings, left, p - 1, compareFunc);
-    quickSort(strings, p + 1, right, compareFunc);
+    quick_sort(strings, left, p - 1, compareFunc);
+    quick_sort(strings, p + 1, right, compareFunc);
 }
 void type(int argc, char** argv) {
     for (int i = 1; i < argc; i++)
-        printf("Ñòðîêà: %s ñ %d ñëîâîì(àìè)\n", argv[i], count_chet_words(argv[i]));
+        printf("Ð¡Ñ‚Ñ€Ð¾ÐºÐ°: %s Ñ %d ÑÐ»Ð¾Ð²Ð¾Ð¼(Ð°Ð¼Ð¸)\n", argv[i], count_chet_words(argv[i]));
 }
