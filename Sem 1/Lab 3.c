@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "locale.h"
 
-void input_size(int* n) {
+void input_n(int* n) {
     int x;
     while (scanf_s("%d", &x) != 1 || x < 1 || getchar() != '\n') {
         printf("Ошибка. Попробуйте снова: ");
@@ -30,177 +30,138 @@ void random(int* n) {
     int x = rand() % 200 - 100;
     *n = x;
 }
-int main(){
-    int p = 1;
-    setlocale(LC_ALL, "Russian");
-    while (p != 2) {
-        srand(time(NULL));
-        int choice;
-        printf("Выберите задание: ");
-        while (scanf_s("%d", &choice) != 1 || (choice != 1 && choice != 2 && choice != 3) || getchar() != '\n') {
-            printf("Ошибка. Попробуйте снова: ");
-            rewind(stdin);
-        }
-        if (choice == 1) {
-            int i, j, arr[100][100], col, row, count = 0, num = 0, mass;
-            printf("Введите кол-во строк: ");
-            input_size(&row);
-            printf("Введите кол-во столбцов: ");
-            input_size(&col);
+int main()
+{
+	int p = 1;
+	setlocale(LC_ALL, "Russian");
+	while (p != 2) {
+		srand(time(NULL));
+		int choice;
+		printf("Выберите задание: ");
+		while (scanf_s("%d", &choice) != 1 || (choice != 1 && choice != 2 && choice != 3) || getchar() != '\n') {
+			printf("Ошибка. Попробуйте снова: ");
+			rewind(stdin);
+		}
+		if (choice == 1) {
+            int n, i, mass, large = 0, arr[100], C, proizv = 1, max = 0;
+            printf("Введите размер массива: ");
+            input_n(&n);
+            printf("Выберите тип ввода\n1) Рандом\n2) Клавиатура\n");
+            input_vybor(&mass);
+            switch (mass){
+            case 1:
+                for (i = 0; i < n; i++) {
+                    random(&arr[i]);
+                    printf("%d ", arr[i]);
+                }
+                printf("\n");
+                break;
+            case 2:
+                printf("Введите элементы массива:\n");
+                for (i = 0; i < n; i++){
+                    input_arr(&arr[i]);
+                }
+                break;
+            }
+            printf("Введите C: ");
+            input_arr(&C);
+            for (i = 0; i < n; i++){
+                if (arr[i] > C){
+                    large++;
+                }
+            }
+            printf("Количество элементов массива, больших С: %d\n", large);
+            for (i = 1; i < n; i++){
+                if (arr[i] < 0){
+                    arr[i] *= -1;
+                }
+                if (arr[i] > arr[max]){
+                    max = i;
+                }
+            }
+            for (i = max + 1; i < n; i++){
+                proizv *= arr[i];
+            }
+            printf("Произведение элементов массива, расположенных после максимального по модулю элемента: %d", proizv);
+		}
+		else if (choice == 2) {
+            int n, i, mass, k, j, arr[100];
+            printf("Введите размер массива: ");
+            input_n(&n);
             printf("Выберите тип ввода\n1) Рандом\n2) Клавиатура\n");
             input_vybor(&mass);
             switch (mass) {
             case 1:
-                for (i = 0; i < row; i++) {
-                    for (j = 0; j < col; j++) {
-                        random(&arr[i][j]);
-                    }
-                }
-                break;
-            case 2:
-                printf("Введите элементы матрицы:\n");
-                for (i = 0; i < row; i++) {
-                    for (j = 0; j < col; j++) {
-                        input_arr(&arr[i][j]);
-                    }
-                }
-                break;
-            }
-            for (i = 0; i < row; i++) {
-                for (j = 0; j < col; j++) {
-                    printf("%5d", arr[i][j]);
+                for (i = 0; i < n; i++) {
+                    random(&arr[i]);
+                    printf("%d ", arr[i]);
                 }
                 printf("\n");
+                break;
+            case 2:
+                printf("Введите элементы массива:\n");
+                for (i = 0; i < n; i++) {
+                    input_arr(&arr[i]);
+                }
+                break;
             }
-            for (j = 0; j < col; j++) {
-                for (i = 0; i < row; i++) {
-                    if (arr[i][j] == 0) {
-                        count++;
+            printf("Введите k: ");
+            input_n(&k);
+            for (i = n - 1; i > 0; i--) {
+                if ((i + 1) % k == 0) {
+                    n++;
+                    for (j = n; j > i; j--) {
+                        arr[j] = arr[j - 1];
                     }
+                    arr[i + 1] = 0;
                 }
             }
-            if (count == 0) {
-                printf("Нет столбцов с нулями\n");
+            for (i = 0; i < n; i++) {
+                printf("%d ", arr[i]);
             }
-            else {
-                printf("Кол-во стобцов имеющих 0: %d \n", count);
-            }
-            for (i = 0; i < row; i++) {
-                for (j = 0; j < col; j++) {
-                    if (arr[i][j] == arr[i][j + 1]) {
-                        num = i + 1;
-                    }
-                }
-            }
-            if (num == 0) {
-                printf("Нет строки с повторяющимися элементами\n");
-            }
-            else {
-                printf("Номер строки: %d", num);
-            }
-        }
-        else if (choice == 2) {
-            int i, j, arr[100][100], col, row, count, num = -1, mass;
-            printf("Введите кол-во строк: ");
-            input_size(&row);
-            printf("Введите кол-во столбцов: ");
-            input_size(&col);
+		}
+		else {
+            int n, i, mass, j, num, arr[100];
+            int CurrentCounter = 0, BiggestCounter = 0;
+            printf("Введите размер массива: ");
+            input_n(&n);
             printf("Выберите тип ввода\n1) Рандом\n2) Клавиатура\n");
             input_vybor(&mass);
             switch (mass) {
             case 1:
-                for (i = 0; i < row; i++) {
-                    for (j = 0; j < col; j++) {
-                        random(&arr[i][j]);
-                    }
-                }
-                break;
-            case 2:
-                printf("Введите элементы матрицы:\n");
-                for (i = 0; i < row; i++) {
-                    for (j = 0; j < col; j++) {
-                        input_arr(&arr[i][j]);
-                    }
-                }
-                break;
-            }
-            for (i = 0; i < row; i++) {
-                for (j = 0; j < col; j++) {
-                    printf("%5d", arr[i][j]);
+                for (i = 0; i < n; i++) {
+                    random(&arr[i]);
+                    printf("%d ", arr[i]);
                 }
                 printf("\n");
+                break;
+            case 2:
+                printf("Введите элементы массива:\n");
+                for (i = 0; i < n; i++) {
+                    input_arr(&arr[i]);
+                }
+                break;
             }
-            for (j = 0; j < col; j++) {
-                for (i = 0; i < row; i++) {
-                    if (arr[i][j] == 0) {
-                        num = i;
-                        break;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = i; j < n; j++) {
+                    if (arr[i] == arr[j]) {
+                        CurrentCounter++;
                     }
                 }
-            }
-            if (num == -1) {
-                printf("Нет строки с нулём\n");
-            }
-            else {
-                printf("Номер строки: %d \n", num + 1);
-                count = arr[num][0];
-                for (i = 0; i < row; i++) {
-                    for (j = 0; j < col; j++) {
-                        arr[i][j] -= count;
-                        printf("%5d", arr[i][j]);
-                    }
-                    printf("\n");
+                if (CurrentCounter > BiggestCounter) {
+                    BiggestCounter = CurrentCounter;
+                    num = arr[i];
                 }
+                CurrentCounter = 0;
             }
-        }
-        else {
-        int i, j, arr[100][100], n, min, k, mass;
-        printf("Введите размер матрицы: ");
-        input_size(&n);
-        printf("Выберите тип ввода\n1) Рандом\n2) Клавиатура\n");
-        input_vybor(&mass);
-        switch (mass) {
-        case 1:
-            for (i = 0; i < n; i++) {
-                for (j = 0; j < n; j++) {
-                    random(&arr[i][j]);
-                }
-            }
-            break;
-        case 2:
-            printf("Введите элементы матрицы:\n");
-            for (i = 0; i < n; i++) {
-                for (j = 0; j < n; j++) {
-                    input_arr(&arr[i][j]);
-                }
-            }
-            break;
-        }
-        for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) {
-                printf("%5d", arr[i][j]);
-            }
-            printf("\n");
-        }
-        min = arr[n / 2][n / 2];
-        for (int i = n / 2, k = 0; i < n; i++, k++) {
-            for (int j = n / 2 - k; j <= n / 2 + k; j++)
-                if (arr[i][j] < min && arr[i][j] % 2 == 0) {
-                    min = arr[i][j];
-                }
-        }
-        if (min % 2 == 0) {
-            printf("\nМинимальный элемент в 3-ей области: %d", min);
-        }
-        else {
-            printf("\nВ 3-ей области нет чётных элементов");
-        }
-        }
-        printf("\n\nХотите выбрать другое задание?\n1) Да\n2) Нет\n");
-        while (scanf_s("%d", &p) != 1 || (p != 1 && p != 2) || getchar() != '\n') {
-            printf("Ошибка. Попробуйте снова: ");
-            rewind(stdin);
-        }
-    }
-    return 0;
+            printf("Часто встречающееся число: %d\n", num);
+		}
+		printf("\n\nХотите выбрать другое задание?\n1) Да\n2) Нет\n");
+		while (scanf_s("%d", &p) != 1 || (p != 1 && p != 2) || getchar() != '\n') {
+			printf("Ошибка. Попробуйте снова: ");
+			rewind(stdin);
+		}
+	}
+	return 0;
 }
