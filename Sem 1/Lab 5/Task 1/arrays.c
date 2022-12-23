@@ -2,7 +2,7 @@
 
 void input_n(int* n) {
     int x;
-    while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
+    while (scanf_s("%d", &x) != 1 || x < 1 || getchar() != '\n') {
         printf("Ошибка. Попробуйте снова: ");
         rewind(stdin);
     }
