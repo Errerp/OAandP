@@ -3,7 +3,7 @@
 void input_n(int* n) {
     int x;
     while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
-        printf("Îøèáêà. Ïîïðîáóéòå ñíîâà: ");
+        printf("ÐžÑˆÐ¸Ð±ÐºÐ°. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°: ");
         rewind(stdin);
     }
     *n = x;
@@ -19,23 +19,23 @@ void* rememory(int* arr, int n)
 void* libertad(int* arr) {
     free(arr);
 }
-// ïå÷àòü ìàññèâà
+// Ð¿ÐµÑ‡Ð°Ñ‚ÑŒ Ð¼Ð°ÑÑÐ¸Ð²Ð°
 void print_arr(int* arr, int n) {
     for (int i = 0; i < n; i++) {
         printf("%d ", *(arr + i));
     }
 }
-// ââîä ýëåìåíòîâ ìàññèâà
+// Ð²Ð²Ð¾Ð´ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°ÑÑÐ¸Ð²Ð°
 void input_arr(int* arr, int n) {
     for (int i = 0; i < n; i++) {
         while (scanf_s("%d", &*(arr + i)) != 1 || *(arr + i) % 1 != 0 || *(arr + i) < 1 || getchar() != '\n') {
-            printf("Îøèáêà. Ïîïðîáóéòå ñíîâà: ");
+            printf("ÐžÑˆÐ¸Ð±ÐºÐ°. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°: ");
             rewind(stdin);
         }
     }
 }
 
-// ðàáîòà â ìàññèâå
+// Ñ€Ð°Ð±Ð¾Ñ‚Ð° Ð² Ð¼Ð°ÑÑÐ¸Ð²Ðµ
 void work_arr(int* arr, int n, int* count) {
     int i, j;
     int p = 0;
