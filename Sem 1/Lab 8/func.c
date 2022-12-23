@@ -68,5 +68,5 @@ void quick_sort(char** strings, int left, int right, int(*compareFunc)(char*))
 }
 void type(int argc, char** argv) {
     for (int i = 1; i < argc; i++)
-        printf("Ñòðîêà: %s ñ %d ñëîâîì(àìè)\n", argv[i], count_chet_words(argv[i]));
+        printf("Ð¡Ñ‚Ñ€Ð¾ÐºÐ°: %s Ñ %d ÑÐ»Ð¾Ð²Ð¾Ð¼(Ð°Ð¼Ð¸)\n", argv[i], count_chet_words(argv[i]));
 }
