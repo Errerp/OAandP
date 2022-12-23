@@ -3,12 +3,12 @@
 void input_size(int* n) {
 	int x;
 	while (scanf_s("%d", &x) != 1 || x < 1 || getchar() != '\n') {
-		printf("Îøèáêà. Ïîïðîáóéòå ñíîâà: ");
+		printf("ÐžÑˆÐ¸Ð±ÐºÐ°. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°: ");
 		rewind(stdin);
 	}
 	*n = x;
 }
-//âûäåëåíèå ïàìÿòè ïîä ìàòðèöó
+//Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð¿Ð°Ð¼ÑÑ‚Ð¸ Ð¿Ð¾Ð´ Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ñƒ
 int* memory(int n, int m)
 {
 	int** matr = (int**)malloc(n * sizeof(int*));
@@ -24,7 +24,7 @@ void* libertad(int n, int** matr) {
 int chooseinput(int* matr, int n, int m) {
 	int x;
 	while (scanf_s("%d", &x) != 1 || x > 100 || x < 1 || x % 1 != 0 || getchar() != '\n') {
-		printf("Îøèáêà. Ïîïðîáóéòå ñíîâà: ");
+		printf("ÐžÑˆÐ¸Ð±ÐºÐ°. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°: ");
 		rewind(stdin);
 	}
 	switch (x)
@@ -38,7 +38,7 @@ int chooseinput(int* matr, int n, int m) {
 	}
 	return matr;
 }
-// ïå÷àòü ìàòðèöû
+// Ð¿ÐµÑ‡Ð°Ñ‚ÑŒ Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ñ‹
 void print_matr(int** matr, int n, int m)
 {
 	for (int i = 0; i < n; i++) {
@@ -49,20 +49,20 @@ void print_matr(int** matr, int n, int m)
 	}
 }
 
-// ââîä ýëåìåíòîâ ìàòðèöû c êëàâèàòóðû
+// Ð²Ð²Ð¾Ð´ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ñ‹ c ÐºÐ»Ð°Ð²Ð¸Ð°Ñ‚ÑƒÑ€Ñ‹
 void input_matr(int** matr, int n, int m)
 {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
-			printf("Ââåäèòå ýëåìåíò [%d][%d]\n", i + 1, j + 1);
+			printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ [%d][%d]\n", i + 1, j + 1);
 			while (scanf_s("%d", *(matr + i) + j) != 1) {
-				printf("Îøèáêà. Ïîïðîáóéòå ñíîâà:\n");
+				printf("ÐžÑˆÐ¸Ð±ÐºÐ°. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°:\n");
 				rewind(stdin);
 			}
 		}
 	}
 }
-// ââîä ýëåìåíòîâ ìàòðèöû ðàíäîìîì
+// Ð²Ð²Ð¾Ð´ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ñ‹ Ñ€Ð°Ð½Ð´Ð¾Ð¼Ð¾Ð¼
 void rand_matr(int** matr, int n, int m) {
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < m; ++j) {
@@ -70,7 +70,7 @@ void rand_matr(int** matr, int n, int m) {
 		}
 	}
 }
-// ðàáîòà â ìàòðèöå
+// Ñ€Ð°Ð±Ð¾Ñ‚Ð° Ð² Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ðµ
 void work_in_matr(int** matr, int n, int m)
 {
 	int max = 0, colmax = 0;
