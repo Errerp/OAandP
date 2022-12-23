@@ -30,12 +30,12 @@ void del(char* line, int i, int step) {
 }
 void first_task(char** line, char** line2) {
 	int k, len = 1;
-	printf("Введите k: ");
+	printf("Р’РІРµРґРёС‚Рµ k: ");
 	while (scanf_s("%d", &k) != 1 || getchar() != '\n') {
-		printf("Ошибка. Попробуйте снова: \n");
+		printf("РћС€РёР±РєР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°: \n");
 		rewind(stdin);
 	}
-	printf("Введите строку: \n");
+	printf("Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ: \n");
 	*line = (char*)calloc(len, sizeof(char));
 	for (int i = 0; ; i++) {
 		*(*line + i) = getchar();
@@ -68,7 +68,7 @@ void first_task(char** line, char** line2) {
 }
 void second_task(char** line1, char** line2) {
 	int len = 1, len2 = 1, count = 0;
-	printf("Введите строку: \n");
+	printf("Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ: \n");
 	*line1 = (char*)calloc(len, sizeof(char));
 	for (int i = 0; ; i++) {
 		*(*line1 + i) = getchar();
@@ -82,7 +82,7 @@ void second_task(char** line1, char** line2) {
 			*line1 = rememory(*line1, len, (len + 1) * sizeof(char));
 		}
 	}
-	printf("Введите 2 строку: \n");
+	printf("Р’РІРµРґРёС‚Рµ 2 СЃС‚СЂРѕРєСѓ: \n");
 	*line2 = (char*)calloc(len2, sizeof(char));
 	for (int i = 0; ; i++) {
 		*(*line2 + i) = getchar();
@@ -101,5 +101,5 @@ void second_task(char** line1, char** line2) {
 			count++;
 		}
 	}
-	printf("Кол-во вхождений второй строки в первую: %d", count);
+	printf("РљРѕР»-РІРѕ РІС…РѕР¶РґРµРЅРёР№ РІС‚РѕСЂРѕР№ СЃС‚СЂРѕРєРё РІ РїРµСЂРІСѓСЋ: %d", count);
 }
