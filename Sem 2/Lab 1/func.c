@@ -106,6 +106,7 @@ void task3(char* filename, int n, char* fn, int m){
 }
 
 void task4(char* filename, int n, char* fn, int m){
+    printf("\nTask in development");
     printf("\nFirst file state: ");
     bubble_sort(filename);
     read_file(filename, n);
@@ -118,14 +119,43 @@ void task4(char* filename, int n, char* fn, int m){
     fopen_s(&second, fn, "rb+");
     fopen_s(&end, "end.bin", "wb+");
 
-    int num;
-    for (int i = 0; i < n; ++i) {
-        fseek(first, i * sizeof(int), SEEK_SET);
-        fread(&num, sizeof(int),1,first);
+    int num, tmp;
+    for (int i = 0, j = 0, z = 0; i < n + m; ++i) {
         fseek(end, i * sizeof(int), SEEK_SET);
-        fwrite(&num, sizeof(int),1,end);
+        fseek(first, j * sizeof(int), SEEK_SET);
+        fseek(second, z * sizeof(int), SEEK_SET);
+        if(j != n && z != m){
+            fread(&tmp, sizeof(int), 1,first);
+            fread(&num, sizeof(int), 1,second);
+            fseek(end, i * sizeof(int), SEEK_SET);
+            if(num > tmp){
+                fwrite(&num, sizeof(int),1,end);
+                z++;
+            }
+            else{
+                fwrite(&tmp, sizeof(int),1,end);
+                j++;
+            }
+        }
+        else if(j != n && z == m){
+            fseek(end, i * sizeof(int), SEEK_SET);
+            fseek(first, j * sizeof(int), SEEK_SET);
+            fread(&tmp, sizeof(int), 1,first);
+            fwrite(&tmp, sizeof(int),1,end);
+        }
+        else if(j == n && z != m){
+            fseek(end, i * sizeof(int), SEEK_SET);
+            fseek(second, z * sizeof(int), SEEK_SET);
+            fread(&num, sizeof(int), 1,second);
+            fwrite(&num, sizeof(int),1,end);
+        }
     }
 
-    printf("\n\nFinally file sort: ");
-    read_file("end.bin", n);
+    printf("\n\nThird file : ");
+    int a;
+    rewind(end);
+    for (int i = 0; i < n + m; ++i) {
+        fread(&a, sizeof(int), 1,end);
+        printf("%d ", a);
+    }
 }
