@@ -50,6 +50,5 @@ int main(int argc, char **argv) {
         printf("\n\nChoose another task?\n1.Yes\n2.No\n");
         t = input(1,2);
     }
-
     return 0;
 }
