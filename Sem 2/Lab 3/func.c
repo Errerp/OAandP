@@ -1,5 +1,24 @@
 #include "func.h"
 
+struct number{
+    unsigned int x : 9;
+};
+
+union code{
+    struct number point;
+    struct {
+        unsigned a0 : 1;
+        unsigned a1 : 1;
+        unsigned a2 : 1;
+        unsigned a3 : 1;
+        unsigned a4 : 1;
+        unsigned a5 : 1;
+        unsigned a6 : 1;
+        unsigned a7 : 1;
+        unsigned a8 : 1;
+    } byte;
+};
+
 struct shapes {
     char* name;
     int square;
@@ -20,35 +39,34 @@ int input(int min, int max) {
 
 void input_shape(struct shapes* shape, int size) {
     for (int i = 0; i < size; i++) {
-        printf("Enter name for shape %d: ", i + 1);
+        printf("\nInput name for shape %d: ", i + 1);
         char name[50];
         scanf_s("%s", &name);
         shape[i].name = malloc(strlen(name) + 1);
         strcpy(shape[i].name, name);
 
-        printf("Enter square for shape %d: ", i + 1);
+        printf("\nInput square for shape %d: ", i + 1);
         shape[i].square = input(1,INT_MAX);
 
-        printf("Enter area for shape %d: ", i + 1);
+        printf("\nInput area for shape %d: ", i + 1);
         while(scanf_s("%lf", &shape[i].SecStruct.area) != 1 || shape[i].SecStruct.area < 1){
             printf("Error. Try again: ");
             rewind(stdin);
         }
-        
-        printf("Enter color of shape %d: ", i + 1);
+
+        printf("\nInput color of shape %d: ", i + 1);
         scanf_s("%s", &shape[i].SecStruct.color);
     }
 }
-
 void output_shape(struct shapes* shape, int size) {
-    printf("%-20s %-10s %-10s %-15s\n", "Name", "Square", "Area", "Color");
+    printf("\n|%-20s |%-10s |%-10s |%-15s|\n", "Name", "Square", "Area", "Color");
     for (int i = 0; i < size; i++) {
-        printf("%-20s %-10d %-10.2lf %-15s\n", shape[i].name, shape[i].square, shape[i].SecStruct.area, shape[i].SecStruct.color);
+        printf("|%-20s |%-10d |%-10.2lf |%-15s|\n", shape[i].name, shape[i].square, shape[i].SecStruct.area, shape[i].SecStruct.color);
     }
 }
 
 void find_sqr_shape(struct shapes* shape, int size, int sqr) {
-    printf("Figures of a smaller square %d:\n", sqr);
+    printf("\nFigures of a smaller square %d:\n\n", sqr);
     for (int i = 0; i < size; ++i) {
         if (shape[i].square < sqr) printf("%s\n", shape[i].name);
     }
@@ -71,22 +89,41 @@ void delete_shape_with_name(struct shapes** shape_ptr, int* size_ptr, char* name
     *shape_ptr = realloc(shape, size * sizeof(struct shapes));
     *size_ptr = size;
 }
-void task1(){
 
+void task1(){
+    printf("Input number (511 - max): ");
+    int num = input(1,511);
+
+    struct number center = { num };
+    union code c;
+    c.point = center;
+
+    printf("\nStart binary code:\n\n256 \t 128 \t 64 \t 32 \t 16 \t 8 \t 4 \t 2 \t 1 \n");
+    printf("%d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \n", c.byte.a8, c.byte.a7, c.byte.a6, c.byte.a5, c.byte.a4, c.byte.a3, c.byte.a2, c.byte.a1, c.byte.a0);
+
+    int ost = num >> 1;
+    struct number sec = { ost };
+    union code s;
+    c.point = sec;
+
+    printf("\nRemainder binary code:\n\n256 \t 128 \t 64 \t 32 \t 16 \t 8 \t 4 \t 2 \t 1 \n");
+    printf("%d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \n", c.byte.a8, c.byte.a7, c.byte.a6, c.byte.a5, c.byte.a4, c.byte.a3, c.byte.a2, c.byte.a1, c.byte.a0);
+
+    printf("\n\nStart number: %d\nRemainder: %d\n", num, ost);
 }
 
 void task2(){
     int size, sqr;
     char name[50];
-    printf("Enter number of shapes: ");
+    printf("\nInput number of shapes: ");
     size = input(1, INT_MAX);
     struct shapes* shape = malloc(size * sizeof(struct shapes));
     input_shape(shape, size);
     output_shape(shape, size);
-    printf("Input amount square: ");
+    printf("\nInput amount square: ");
     sqr = input(1, INT_MAX);
     find_sqr_shape(shape, size, sqr);
-    printf("Input name of shape: ");
+    printf("\nInput name of shape: ");
     scanf_s("%s", &name);
     delete_shape_with_name(&shape, &size, name);
     output_shape(shape, size);
