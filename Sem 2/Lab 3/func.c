@@ -59,9 +59,9 @@ void input_shape(struct shapes* shape, int size) {
     }
 }
 void output_shape(struct shapes* shape, int size) {
-    printf("\n|%-20s |%-10s |%-10s |%-15s|\n", "Name", "Square", "Area", "Color");
+    printf("\n|%-20s |%-10s |%-10s |%-10s|\n", "Name", "Square", "Area", "Color");
     for (int i = 0; i < size; i++) {
-        printf("|%-20s |%-10d |%-10.2lf |%-15s|\n", shape[i].name, shape[i].square, shape[i].SecStruct.area, shape[i].SecStruct.color);
+        printf("|%-20s |%-10d |%-10.2lf |%-10s|\n", shape[i].name, shape[i].square, shape[i].SecStruct.area, shape[i].SecStruct.color);
     }
 }
 
