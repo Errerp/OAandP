@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
+struct number;
+union code;
 struct shapes;
 int input(int min, int max);
 void input_shape(struct shapes* shape, int size);
