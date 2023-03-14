@@ -126,6 +126,10 @@ void task2(){
     printf("\nInput amount square: ");
     sqr = input(1, INT_MAX);
     find_sqr_shape(shape, size, sqr);
+    printf("\nPrint all the shapes again?\n1.Yes\n2.No\n ");
+    int num = input(1,2);
+    if(num = 1)
+        output_shape(shape, size);
     printf("\nInput name of shape: ");
     scanf_s("%s", &name);
     delete_shape_with_name(&shape, &size, name);
