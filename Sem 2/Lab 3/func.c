@@ -67,8 +67,11 @@ void output_shape(struct shapes* shape, int size) {
 
 void find_sqr_shape(struct shapes* shape, int size, int sqr) {
     printf("\nFigures of a smaller square %d:\n\n", sqr);
+    printf("\n|%-20s |%-10s |%-10s |%-10s|\n", "Name", "Square", "Area", "Color");
     for (int i = 0; i < size; ++i) {
-        if (shape[i].square < sqr) printf("%s\n", shape[i].name);
+        if (shape[i].square < sqr){
+            printf("|%-20s |%-10d |%-10.2lf |%-10s|\n", shape[i].name, shape[i].square, shape[i].SecStruct.area, shape[i].SecStruct.color);
+        }
     }
 }
 
