@@ -104,6 +104,21 @@ void task1(){
     printf("\nStart binary code:\n\n256 \t 128 \t 64 \t 32 \t 16 \t 8 \t 4 \t 2 \t 1 \n");
     printf("%d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \n", c.byte.a8, c.byte.a7, c.byte.a6, c.byte.a5, c.byte.a4, c.byte.a3, c.byte.a2, c.byte.a1, c.byte.a0);
 
+//    c.byte.a0 = c.byte.a1;
+//    c.byte.a1 = c.byte.a2;
+//    c.byte.a2 = c.byte.a3;
+//    c.byte.a3 = c.byte.a4;
+//    c.byte.a4 = c.byte.a5;
+//    c.byte.a5 = c.byte.a6;
+//    c.byte.a6 = c.byte.a7;
+//    c.byte.a7 = c.byte.a8;
+//    c.byte.a8 = 0;
+//
+//    num = c.byte.a0 * 1 + c.byte.a1 * 2 + c.byte.a2 * 4 + c.byte.a3 * 8 + c.byte.a4 * 16 + c.byte.a5 * 32 + c.byte.a6 * 64 + c.byte.a7 * 128;
+//    printf("\nStart binary code:\n\n256 \t 128 \t 64 \t 32 \t 16 \t 8 \t 4 \t 2 \t 1 \n");
+//    printf("%d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \n", c.byte.a8, c.byte.a7, c.byte.a6, c.byte.a5, c.byte.a4, c.byte.a3, c.byte.a2, c.byte.a1, c.byte.a0);
+//    printf("\n\nRemainder: %d\n", num);
+
     int ost = num >> 1;
     struct number sec = { ost };
     union code s;
