@@ -93,11 +93,12 @@ void remove_shape(Shapes **arr, int *len, const char *color) {
             }
             (*len)--;
             *arr = realloc(*arr, (*len) * sizeof(Shapes));
-            printf("\nSuccessfully deleted!\n");
         }
     }
     if(count == 0)
         printf("\nNo one shape with color: %s\n", color);
+    else
+        printf("\nSuccessfully deleted!\n");
     getchar();
 }
 
