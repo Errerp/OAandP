@@ -40,7 +40,7 @@ void input_shape(Shapes **arr, int *len) {
     double area;
     int i = 0;
 
-    while (true) {
+    while (1) {
         if(i != 0){
             printf("\n1.Enter one more shapes.\n2.Stop\n");
             input(&choice, 1, 2);
@@ -139,8 +139,8 @@ void task1(Shapes *arr, int len) {
 
 void task2(Shapes **arr, int *len) {
     char* str = malloc(1);
-        printf("\nEnter release color to delete:");
-        input_string(&str);
+    printf("\nEnter release color to delete:");
+    input_string(&str);
     remove_shape(arr, len, str);
 }
 
