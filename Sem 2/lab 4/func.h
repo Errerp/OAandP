@@ -3,10 +3,6 @@
 #include <string.h>
 
 
-enum bool {
-    false, true
-};
-
 typedef union {
     char color[10];
 } Color;
