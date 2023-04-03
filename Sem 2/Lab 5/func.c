@@ -35,8 +35,7 @@ void print_stack(struct FILO* head){
 }
 
 struct FILO *find_max(struct FILO *head){
-    struct FILO *temp = head;
-    struct FILO *m;
+    struct FILO *temp = head, *m = head -> next;
     if(head != NULL){
         int max = head -> data;
         while(temp != NULL){
@@ -54,7 +53,7 @@ int find_sum(struct FILO *head){
     struct FILO *temp = find_max(head);
     if(head != NULL){
         while(temp != NULL){
-            sum += temp->data;
+            sum += temp -> data;
             temp = temp -> next;
         }
         return sum;
