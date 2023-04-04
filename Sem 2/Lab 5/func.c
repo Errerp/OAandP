@@ -28,7 +28,7 @@ void print_stack(struct FILO *head) {
     struct FILO *temp = head;
 
     while (temp != NULL) {
-        printf("%d ", temp->data);
+        printf(" %d |", temp->data);
         temp = temp->next;
     }
     printf("\n");
@@ -144,7 +144,7 @@ void task1() {
 
     }
 
-    printf("\nStack: ");
+    printf("\nStack: |");
     print_stack(head);
 
     int sum = find_sum(head);
@@ -199,10 +199,10 @@ void task2() {
     struct FILO * head3;
     head3 = merge_FILO(head1,head2,head3);
 
-    printf("\nFirst stack: ");
+    printf("\nFirst stack: |");
     print_stack(head1);
-    printf("\nSecond stack: ");
+    printf("\nSecond stack: |");
     print_stack(head2);
-    printf("\nThird descending stack: ");
+    printf("\nThird descending stack: |");
     print_stack(head3);
 }
