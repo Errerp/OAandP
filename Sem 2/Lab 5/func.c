@@ -149,6 +149,8 @@ void task1() {
 
     int sum = find_sum(head);
     printf("Sum after maximum == %d", sum);
+    
+    free(head);
 }
 
 void task2() {
@@ -205,4 +207,8 @@ void task2() {
     print_stack(head2);
     printf("\nThird descending stack: |");
     print_stack(head3);
+    
+    free(head1);
+    free(head2);
+    free(head3);
 }
