@@ -10,6 +10,8 @@ struct FILO {
 };
 
 int input(int min, int max);
+struct FILO *pop(struct FILO *head);
+void free_FILO(struct FILO **head);
 struct FILO *push(struct FILO* , int num);
 void print_stack(struct FILO* );
 struct FILO *find_max(struct FILO *);
