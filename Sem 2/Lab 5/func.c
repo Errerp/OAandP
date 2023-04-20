@@ -9,6 +9,23 @@ int input(int min, int max) {
     return x;
 }
 
+struct FILO *pop(struct FILO *head) {
+    struct FILO *temp = head;
+    if (head != NULL) {
+        head = head->next;
+        free(temp);
+        return head;
+    } else
+        return NULL;
+}
+
+void free_FILO(struct FILO **head) {
+    while (*head != NULL) {
+        *head = pop(*head);
+    }
+    free(*head);
+}
+
 struct FILO *push(struct FILO *head, int num) {
     struct FILO *temp;
     temp = (struct FILO *) malloc(sizeof(struct FILO));
@@ -149,8 +166,8 @@ void task1() {
 
     int sum = find_sum(head);
     printf("Sum after maximum == %d", sum);
-    
-    free(head);
+
+    free_FILO(&head);
 }
 
 void task2() {
@@ -207,8 +224,8 @@ void task2() {
     print_stack(head2);
     printf("\nThird descending stack: |");
     print_stack(head3);
-    
-    free(head1);
-    free(head2);
-    free(head3);
+
+    free_FILO(&head1);
+    free_FILO(&head2);
+    free_FILO(&head3);
 }
