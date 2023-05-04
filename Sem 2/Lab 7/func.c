@@ -9,45 +9,46 @@ int input(int min, int max) {
     return x;
 }
 
-void add_tree_element(struct Tree **TreeRoot, int value) {
-    if (!(*TreeRoot)) {
+void add_tree_element(struct Tree **root, int data) {
+    if (!(*root)) {
         struct Tree *NewNode = calloc(1, sizeof(struct Tree));
-        NewNode->value = value;
-        NewNode->Left = NULL;
-        NewNode->Right = NULL;
-        *TreeRoot = NewNode;
+        NewNode->data = data;
+        NewNode->left = NULL;
+        NewNode->right = NULL;
+        *root = NewNode;
         return;
     }
-    if (value > (*TreeRoot)->value) {
-        add_tree_element(&((*TreeRoot)->Right), value);
+    if (data > (*root)->data) {
+        add_tree_element(&((*root)->right), data);
     } else {
-        add_tree_element(&((*TreeRoot)->Left), value);
+        add_tree_element(&((*root)->left), data);
     }
 }
 
-void delete_tree_element(struct Tree *TreeRoot) {
-    if (TreeRoot->Right != NULL) {
-        delete_tree_element(TreeRoot->Right);
+void delete_tree_element(struct Tree *root) {
+    if (root->right != NULL) {
+        delete_tree_element(root->right);
     }
-    if (TreeRoot->Left != NULL) {
-        delete_tree_element(TreeRoot->Left);
+    if (root->left != NULL) {
+        delete_tree_element(root->left);
     }
-    free(TreeRoot);
+    free(root);
 }
 
-void find_max_independent_set(struct Tree *TreeRoot){
+void find_max_independent_set(struct Tree *root) {
 
 }
 
-void print_tree(struct Tree *treePtr, int spaces) {
-    int loop;
-    while (treePtr != NULL) {
-        print_tree(treePtr->Right, spaces + 4);
+void print_tree(struct Tree *root, int spaces) {
+    int loop; // loop counter
+    while (root != NULL) {
+        print_tree(root->right, spaces + 4);
         for (loop = 1; loop <= spaces; loop++) {
             printf(" ");
         }
-        printf("%d\n", treePtr->value);
-        print_tree(treePtr->Left, spaces + 4);
-        treePtr = NULL;
+        printf("%d\n", root->data);
+        print_tree(root->left, spaces + 4);
+        root = NULL;
     }
+
 }
