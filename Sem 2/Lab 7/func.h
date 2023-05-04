@@ -2,17 +2,17 @@
 #include <stdlib.h>
 
 struct Tree {
-    int value;
-    struct Tree *Left;
-    struct Tree *Right;
+    int data;
+    struct Tree *left;
+    struct Tree *right;
 };
 
 int input(int min, int max);
 
-void add_tree_element(struct Tree **TreeRoot, int value);
+void add_tree_element(struct Tree **root, int data);
 
-void delete_tree_element(struct Tree *TreeRoot);
+void delete_tree_element(struct Tree *root);
 
-void find_max_independent_set(struct Tree *TreeRoot);
+void find_max_independent_set(struct Tree *root);
 
-void print_tree(struct Tree *treePtr, int spaces);
+void print_tree(struct Tree *root, int spaces);
