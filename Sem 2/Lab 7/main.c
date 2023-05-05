@@ -16,11 +16,17 @@ int main() {
             if (t == 2)
                 break;
         }
-        printf("\nPrinted Tree:\n");
+        printf("\nPrinted Tree:\n\n");
         print_tree(root, 5);
+
+        printf("\n\nYou want make a detour?\n1.Yes\n2.No\n");
+        int task = input(1, 2);
+        if(task == 1)
+            spiral(root);
+
         delete_tree_element(root);
 
-        printf("You want repeat task?\n1.Yes\n2.No\n");
+        printf("\n\nYou want repeat task?\n1.Yes\n2.No\n");
         int repeat = input(1, 2);
 
         if (repeat == 2)
