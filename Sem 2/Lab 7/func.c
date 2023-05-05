@@ -35,12 +35,49 @@ void delete_tree_element(struct Tree *root) {
     free(root);
 }
 
-void find_max_independent_set(struct Tree *root) {
+void spiral(struct Tree *root) {
+    if (root == NULL) {
+        return;
+    }
+    int level = 1;
 
+    while (print_level_left(root, level++) && print_level_right(root, level++));
+}
+
+bool print_level_left(struct Tree *root, int level) {
+    if (root == NULL) {
+        return false;
+    }
+
+    if (level == 1) {
+        printf(" %d", root->data);
+        return true;
+    }
+
+    bool left = print_level_left(root->left, level - 1);
+    bool right = print_level_left(root->right, level - 1);
+
+    return left || right;
+}
+
+bool print_level_right(struct Tree *root, int level) {
+    if (root == NULL) {
+        return false;
+    }
+
+    if (level == 1) {
+        printf(" %d", root->data);
+        return true;
+    }
+
+    bool right = print_level_right(root->right, level - 1);
+    bool left = print_level_right(root->left, level - 1);
+
+    return left || right;
 }
 
 void print_tree(struct Tree *root, int spaces) {
-    int loop; // loop counter
+    int loop;
     while (root != NULL) {
         print_tree(root->right, spaces + 4);
         for (loop = 1; loop <= spaces; loop++) {
